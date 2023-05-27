@@ -55,3 +55,5 @@ if __name__ == '__main__':
     print("\nmulti mit methode: ", calc.multi(1,2,3,4))
 
     print("\nfertig")
+
+    print("====================================================================")
