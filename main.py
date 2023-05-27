@@ -44,12 +44,14 @@ if __name__ == '__main__':
 
     print("Addition, Summe: ", add.addiere(23, 45))
 
-    print("Subtraktion, Differenz", diff.subtrahiere(15, 56))
+    print("\nSubtraktion, Differenz", diff.subtrahiere(15, 56))
 
     calc = Rechner()
 
     A = calc.addiere(34, 23) * calc.subtrahiere(11, 34)
 
-    print(A)
+    print("\nmulti ohne methode:", A)
 
-    print(calc.multi(1,2,3,4))
+    print("\nmulti mit methode: ", calc.multi(1,2,3,4))
+
+    print("\nfertig")
