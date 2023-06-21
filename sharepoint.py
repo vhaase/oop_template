@@ -12,8 +12,8 @@ class SharePoint:
         self.fileentry = None
         self.filelist = None
         self.folder = None
-        self.alleFolder = None
-        self.folderlist = None
+        self.Listelemente = None
+        self.list = None
         self.ctx_auth = None
         self.web = None
         self.ctx = None
@@ -24,25 +24,13 @@ class SharePoint:
         self.ctx = Access.contxt(self)
 
         try:
-            # Get the folder list
-            self.folderlist = self.ctx.web.lists.get_by_title("Dokumente")
-            self.alleFolder = self.folderlist.items.select(["FileSystemObjectType"]).expand(
-                ["File", "Folder"]).get().execute_query()
-            # Print the names of the folders
-            for item in self.alleFolder:
-                if item.file_system_object_type == FileSystemObjectType.Folder:
-                    print(item.folder.serverRelativeUrl)
-                else:
-                    print(item.fileentry.serverRelativeUrl)
-            print("\n\nliste fertig")
-
-            # Get the folder
+            # Get the folder//List
             self.folder = self.ctx.web.get_folder_by_server_relative_url(self.cred.folder_relative_url)
             self.ctx.load(self.folder)
             self.ctx.execute_query()
 
             # Get the filelist in the folder
-            self.filelist = self.folder.filelist
+            self.filelist = self.folder.folders
             self.ctx.load(self.filelist)
             self.ctx.execute_query()
 
