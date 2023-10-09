@@ -1,4 +1,22 @@
-# Meine Vorlage zum ausprobieren
+# Meine Vorlage zum Ausprobieren
+
+import Konstante
+import sharepoint
+import Funktionen
+
+class Person:
+
+    def name(self, name):
+        self.name=name
+        return self.name()
+
+    def alter(self, alter):
+        self.alter=alter
+        return self.name()
+
+    def geschl(self, geschl):
+        self.geschl=geschl
+        return self.geschl()
 
 class Addieren:
     def __init__(self):
@@ -24,8 +42,15 @@ class Subtrahieren:
         self.Subtr2 = subtr2
         self.Subtr = self.Subtr2 - self.Subtr1
         return self.Subtr
+
+
 class Rechner(Addieren, Subtrahieren):
     def __init__(self):
+        """
+        Diese Klasse erbt von Addieren und Subtrahieren. Ausserdem wird eine zusätzliche Methode eingeführt, die
+        mehrere berechnen kombiniert.
+        """
+        super().__init__()
         self.Multi = None
 
     def multi(self, sum1, sum2, subtr1, subtr2):
@@ -39,21 +64,31 @@ class Rechner(Addieren, Subtrahieren):
 
 # hier geht's los
 if __name__ == '__main__':
-    add = Addieren()
-    diff = Subtrahieren()
+    add = Funktionen.Addieren()
+    diff = Funktionen.Subtrahieren()
 
-    print("Addition, Summe: ", add.addiere(23, 45))
+    print("Addition, Summe: ", add.addiere(Konstante.Summand1, Konstante.Summand2))
 
     print("\nSubtraktion, Differenz", diff.subtrahiere(15, 56))
 
-    calc = Rechner()
+    calc = Funktionen.Rechner()
 
     A = calc.addiere(34, 23) * calc.subtrahiere(11, 34)
 
     print("\nmulti ohne methode:", A)
 
-    print("\nmulti mit methode: ", calc.multi(1,2,3,4))
+    print("\nmulti mit methode: ", calc.multi(1, 2, 3, 4))
 
     print("\nfertig")
 
-    print("====================================================================")
+    SP=sharepoint.SharePoint()
+    SP.access()
+
+    # SP.accessFolders()
+    
+    Paul = Person()
+    
+    Paul.name="Paul"
+    Paul.alter=59
+    Paul.geschl="m"
+    
